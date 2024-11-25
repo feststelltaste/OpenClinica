@@ -30,6 +30,11 @@
 		<!-- Library Versions -->
 		<spring.version>3.2.18.RELEASE</spring.version>
 		<db.test>localhost</db.test>
+		
+		<jqassistant.version>2.4.0</jqassistant.version>
+  		<sonar.organization>feststelltaste</sonar.organization>
+  		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+
 	</properties>
 	<profiles>
 		<profile>
@@ -79,7 +84,20 @@
 									</pluginExecutions>
 								</lifecycleMappingMetadata>
 							</configuration>
-						</plugin>
+						</plugin>				       
+            <plugin>
+                <groupId>com.buschmais.jqassistant</groupId>
+                <artifactId>jqassistant-maven-plugin</artifactId>
+                <version>${jqassistant.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>scan</goal>
+                            <goal>analyze</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>		
 					</plugins>
 				</pluginManagement>
 			</build>
@@ -520,6 +538,20 @@
 						<schemaDirectory>src/main/webapp/WEB-INF/schemas</schemaDirectory>
 					</configuration>
 				</plugin>
+								       
+				<plugin>
+					<groupId>com.buschmais.jqassistant</groupId>
+					<artifactId>jqassistant-maven-plugin</artifactId>
+					<version>${jqassistant.version}</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>scan</goal>
+								<goal>analyze</goal>
+							</goals>
+						</execution>
+					</executions>
+            </plugin>
 			</plugins>
 		</pluginManagement>
 
